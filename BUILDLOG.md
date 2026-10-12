@@ -15,3 +15,12 @@
   2. `under_investigation` was set when the cited source said an investigation was open (NHTSA PE25013 and the Santa Monica PE, OSHA at Palermo's, Nevada Highway Patrol, Wuhan). Those statuses reflect the source date, so later runs should recheck them.
   3. Zoox's injuries to test-vehicle occupants (RIC-2025-001, -005) come from OSHA data as reported by TechCrunch and count as automated-driving testing. Do you want to keep them in scope?
   4. Some NHTSA, CNBC and news URLs that were linked from other pages, or built by hand, couldn't be opened from this environment. Only pages that opened are cited, so several rows cite news (tier C) even though an official record probably exists.
+
+## 2026-10-12 (America/New_York): weekly run (manual fire)
+- The trigger said `data/incidents.csv` held only a header. That's true on `main` but not on `census/next`, which already had the 23 backfill rows in open PR #1. So I didn't repeat the backfill and ran the 14-day window instead.
+- Incidents added: 1 (RIC-2026-011, humanoid, Colombia, Oct 2026). Total: 24.
+- Correction: RIC-2026-001 now cites NHTSA PE26001 first and is tier A.
+- TODO: openFDA is still blocked (see the note under the item), so no TODO commit.
+- Needs Geraldo's decision:
+  1. Two verified incidents fell just outside the 14-day window and the backfill missed them, so I didn't add them. Should they go in? They are the DePuy Synthes/Medos Velys robotic-assist station FDA Class II recall (initiated 2026-07-23; the arm may move unintentionally; https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfres/res.cfm?id=221615) and a humanoid that kicked at a customer and staff at a store in Russia on 2026-08-31 with no injuries (Men's Journal).
+  2. RIC-2026-011 cites only one Colombian outlet, and the robot's maker isn't named.
