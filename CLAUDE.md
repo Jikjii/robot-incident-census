@@ -14,7 +14,8 @@ This is the Robot Incident Census: a public, sourced registry of robot incidents
 - Use `unknown` rather than guessing, especially for `evidence`.
 - Say "reported" whenever the source is a report or allegation rather than a finding.
 - Skip anything already in `data/incidents.csv`; check the same date, company and robot before adding.
-- IDs are `RIC-YYYY-NNN`, where `YYYY` is the incident year and `NNN` continues that year's sequence.
+- IDs are `RIC-YYYY-NNN`, where `YYYY` is the incident year and `NNN` continues after the highest number
+  used that year. Never reuse a retired ID (listed under Corrections in METHODOLOGY.md).
 
 ## Checks
 - Run `python -m census validate` and `python -m pytest -q` before every commit; commit only when both pass.
