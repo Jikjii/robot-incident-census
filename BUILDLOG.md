@@ -24,3 +24,12 @@
 - Needs Geraldo's decision:
   1. Two verified incidents fell just outside the 14-day window and the backfill missed them, so I didn't add them. Should they go in? They are the DePuy Synthes/Medos Velys robotic-assist station FDA Class II recall (initiated 2026-07-23; the arm may move unintentionally; https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfres/res.cfm?id=221615) and a humanoid that kicked at a customer and staff at a store in Russia on 2026-08-31 with no injuries (Men's Journal).
   2. RIC-2026-011 cites only one Colombian outlet, and the robot's maker isn't named.
+
+## 2026-10-12 (America/New_York): review decisions applied
+- Geraldo's decisions are now in METHODOLOGY.md: recalls with no reported injury count, with harm `none`, dated to when the recall started (for NHTSA, the first incident in the chronology); injuries to people on board test vehicles are in scope, so RIC-2025-001 and -005 stay; recalls must concern how the robot senses, decides or moves.
+- Removed: RIC-2025-003 and RIC-2026-006 (robotic pool-vacuum battery and charger recalls). Their IDs are retired.
+- Added: RIC-2026-012, the VELYS robotic-assist station recall (FDA Z-3088-2026). Total: 23.
+- RIC-2026-011 now has a second source (Noticias RCN).
+- Not added: the Saratov store humanoid (video posted 2026-09-01). Its sources don't confirm the date, an injury or any damage, no regulator or operator documented a near miss, and Tom's Guide suggests the scene was staged, so it doesn't meet the incident definition.
+- TODO: no item done; openFDA is still blocked.
+- Needs Geraldo's decision: how to unblock openFDA (network access for the agent, or a GitHub Action that runs the pull), and whether weekly runs should recheck `under_investigation` rows.
