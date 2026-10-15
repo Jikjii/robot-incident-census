@@ -1,7 +1,8 @@
 ## Automate the sources
 Automated pulls write candidates to `data/candidates/`; only verified rows go into `data/incidents.csv`.
 
-- [ ] openFDA: adverse event reports for robot-assisted surgical systems → `data/candidates/openfda.csv`
+- [x] openFDA: adverse event reports for robot-assisted surgical systems → `data/candidates/openfda.csv`
+  - Done 2026-10-14: `python -m census openfda [--days N | --since DATE] [--until DATE]` pulls injury and death reports for product code NAY (computer-controlled surgical systems) and keeps identifiers, dates and a MAUDE link only, no narrative text.
 - [ ] NHTSA Standing General Order crash reports for automated driving systems (not driver assistance) → `data/candidates/nhtsa.csv`
 - [ ] OSHA severe injury reports that mention robots → `data/candidates/osha.csv`
 - [ ] EU Safety Gate alerts for robots and automated machinery → `data/candidates/eu_safety_gate.csv`
