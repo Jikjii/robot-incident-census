@@ -33,3 +33,19 @@
 - Not added: the Saratov store humanoid (video posted 2026-09-01). Its sources don't confirm the date, an injury or any damage, no regulator or operator documented a near miss, and Tom's Guide suggests the scene was staged, so it doesn't meet the incident definition.
 - TODO: no item done; openFDA is still blocked.
 - Needs Geraldo's decision: how to unblock openFDA (network access for the agent, or a GitHub Action that runs the pull), and whether weekly runs should recheck `under_investigation` rows.
+
+## 2026-10-14 (America/New_York): weekly run
+- Window: incidents reported 2026-09-30 to 2026-10-14. About 40 web calls.
+- Incidents added: 2. Total: 25.
+  - RIC-2026-013: a driverless Waymo in Tampa reportedly turned into oncoming traffic on a temporary one-way street (2026-10-04). Waymo confirmed it entered the street. No collision. Coded `near_miss` because the operator documented it.
+  - RIC-2026-014: NHTSA opened defect petition DP26010 (2026-10-09) on alleged Tesla robotaxi speeding in active school zones. No crashes.
+- TODO done: openFDA pull. api.fda.gov is reachable now. `python -m census openfda` wrote 83 injury and death reports (product code NAY, received 2026-09-14 to 2026-10-14) to `data/candidates/openfda.csv` for review. None of them were added to the census.
+- Not added:
+  - Tesla Cybercab with a torn-off door panel in Philadelphia (around 2026-10-07): only Reddit photos, and Electrek says it was most likely human-driven.
+  - Humanoid robot that touched a 16-year-old girl in Cologne (2026-10-10): police are investigating whether two young people were controlling it, the harm doesn't fit a harm class, and it involves a minor.
+  - Statesman report of "Texas' first fatal autonomous vehicle collision": the page couldn't be opened, so the date and details are unverified.
+- Needs Geraldo's decision:
+  1. Dating a regulatory action that has no dated incident: RIC-2026-014 uses the date NHTSA opened the file. Is that the convention you want? It cites news (tier C) because the NHTSA PDF (INOA-DP26010) couldn't be opened from here.
+  2. Should the openFDA pull also cover other product codes? OLO covers Mako, ROSA, Mazor and VELYS but also includes non-robotic navigation systems.
+  3. A missed backfill candidate: a Coco delivery robot was hit by an LAFD ambulance in Hollywood (about 2026-01-23, no injuries, CBS LA). Should it be added?
+  4. The Statesman fatality report needs a source that opens. Should a later run try again?
