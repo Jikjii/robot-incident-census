@@ -49,3 +49,22 @@
   2. Should the openFDA pull also cover other product codes? OLO covers Mako, ROSA, Mazor and VELYS but also includes non-robotic navigation systems.
   3. A missed backfill candidate: a Coco delivery robot was hit by an LAFD ambulance in Hollywood (about 2026-01-23, no injuries, CBS LA). Should it be added?
   4. The Statesman fatality report needs a source that opens. Should a later run try again?
+
+## 2026-10-21 (America/New_York): weekly run
+- Window: incidents reported 2026-10-07 to 2026-10-21. About 45 web calls. `census/next` was already up to date with `main`, so the rebase was a no-op.
+- Incidents added: 1. Total: 26.
+  - RIC-2026-015: Tesla reported to NHTSA its first Cybercab crash (SGO report 13781-16672, August 2026, Austin): with the ADS engaged and a safety monitor aboard, it drove into a water-filled pothole at up to 5 mph. Property damage only. Tier A (NHTSA SGO ADS file, published in mid-October).
+- TODO done: NHTSA pull. `python -m census nhtsa` reads only the ADS crash-report file and wrote 185 reports submitted August to October 2026 to `data/candidates/nhtsa.csv` for review. None of them were added to the census.
+- Not added:
+  - Tesla crashes while a remote operator was driving (Electrek, 2026-10-15; SGO 13781-16678 Dallas and 13781-16679 Austin, both August 2026, property damage only). A remote human was in control, which looks like "a human is driving" under the methodology, so I left them out.
+  - Waymo Houston barrier-wall crash (SGO 30270-16552, September 2026, test driver hospitalized with minor injuries). The report says the test driver had switched to manual mode before impact.
+  - Delivery-robot biometric lawsuits in Chicago (Block Club, 2026-10-16), a Philadelphia protester arrested for blocking a robot (2026-10-14), and the Cologne humanoid (already declined last week): no physical harm from the robot.
+- Needs Geraldo's decision:
+  1. Remote-operator crashes: are robotaxi crashes while a remote human drives in scope, or out like driver assistance?
+  2. The SGO ADS file is a rolling download (it currently covers submissions from June 2025). RIC-2026-015 cites it with the report ID in the summary. Is that citation style OK, given that older periods move to archive files?
+  3. Verified backfill candidates that fell outside the window (not added):
+     - Waymo, Dallas, August 2026: a pedestrian struck by an SUV was thrown into a slowing Waymo and died (SGO 30270-16196). This is the Statesman's "Texas' first fatal autonomous vehicle collision" from last week's open question. The Waymo didn't cause the impact.
+     - Waymo, Tempe, September 2025: a motorcycle fatality (SGO 30270-11713). Not yet reviewed in detail.
+     - Avride: NHTSA PE26003, opened 2026-05-06, covering 16 crashes in Dallas and Austin, 1 alleged minor injury (https://static.nhtsa.gov/odi/inv/2026/INOA-PE26003-14280.pdf).
+     - Hellobike robotaxi struck two pedestrians in Zhuzhou, China, December 2025 (Yicai, CarNewsChina). Not yet opened.
+     - Västtrafik/Karsan autonomous bus rear-ended by a tram in Gothenburg, 2026-05-25, no injuries (Startup Fortune citing Reuters).
