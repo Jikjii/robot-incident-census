@@ -3,7 +3,8 @@ Automated pulls write candidates to `data/candidates/`; only verified rows go in
 
 - [x] openFDA: adverse event reports for robot-assisted surgical systems → `data/candidates/openfda.csv`
   - Done 2026-10-14: `python -m census openfda [--days N | --since DATE] [--until DATE]` pulls injury and death reports for product code NAY (computer-controlled surgical systems) and keeps identifiers, dates and a MAUDE link only, no narrative text.
-- [ ] NHTSA Standing General Order crash reports for automated driving systems (not driver assistance) → `data/candidates/nhtsa.csv`
+- [x] NHTSA Standing General Order crash reports for automated driving systems (not driver assistance) → `data/candidates/nhtsa.csv`
+  - Done 2026-10-21: `python -m census nhtsa [--days N | --since DATE] [--until DATE]` reads NHTSA's ADS crash-report file only (no Level 2 file), keeps the latest version of each report submitted in the window, and keeps identifiers, months, city, operator type, engagement status and the alleged injury level, with no narrative, VIN, address or coordinates.
 - [ ] OSHA severe injury reports that mention robots → `data/candidates/osha.csv`
 - [ ] EU Safety Gate alerts for robots and automated machinery → `data/candidates/eu_safety_gate.csv`
 - [ ] Weekly GitHub Action that runs the pulls, commits candidates and opens an issue listing new ones for review (pattern: the BCI Census `weekly.yml`)
