@@ -26,9 +26,18 @@ One event in which a robot:
 - injured or killed someone,
 - damaged property,
 - caused a near miss that a regulator, court or the operator documented, or
-- led to a safety recall or regulatory action.
+- led to a safety recall or regulatory action over how it senses, decides or moves.
 
-Routine malfunctions with no safety impact are out.
+Routine malfunctions with no safety impact are out, and so are recalls of batteries, chargers or other
+parts that don't affect how the robot senses, decides or moves.
+
+People on board count. An injury to a passenger, or to staff riding in an automated test vehicle, is in
+scope when the automated system's behavior caused it.
+
+## Recalls and regulatory actions
+
+A recall is dated to the day the firm started it (FDA and CPSC recalls) or, for an NHTSA recall, to the
+first incident in the recall's chronology. When the sources report no injury or damage, `harm` is `none`.
 
 ## Sources and tiers
 
@@ -65,3 +74,6 @@ be named.
 
 Open an issue with a source. Corrections are made in the data, and the row's sources are updated to show
 why.
+
+A row that turns out to be out of scope is removed, and its ID is retired rather than reused. Retired so
+far: RIC-2025-003 and RIC-2026-006, recalls of robotic pool vacuums for overheating batteries and chargers.
