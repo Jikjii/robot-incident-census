@@ -68,3 +68,17 @@
      - Avride: NHTSA PE26003, opened 2026-05-06, covering 16 crashes in Dallas and Austin, 1 alleged minor injury (https://static.nhtsa.gov/odi/inv/2026/INOA-PE26003-14280.pdf).
      - Hellobike robotaxi struck two pedestrians in Zhuzhou, China, December 2025 (Yicai, CarNewsChina). Not yet opened.
      - Västtrafik/Karsan autonomous bus rear-ended by a tram in Gothenburg, 2026-05-25, no injuries (Startup Fortune citing Reuters).
+
+## 2026-10-28 (America/New_York): weekly run
+- Window: incidents reported 2026-10-14 to 2026-10-28. About 30 web calls. `census/next` was already up to date with `main`, so the rebase was a no-op.
+- Incidents added: 1. Total: 27.
+  - RIC-2026-016: in Tallinn on 2026-10-26, a Bolt delivery robot made by Starship reportedly entered a crossing on a red light. A city bus braked hard and hit it, and up to nine passengers were hurt (per operator TLT). The robot left the scene, and Starship opened an internal investigation. Evidence is `under_investigation`. Tier C (ERR, DPA via Yahoo).
+- TODO: OSHA pull blocked. www.osha.gov returns 403 (CloudFront) to this environment, and data.dol.gov's API needs a key. I added a note under the item and didn't build it.
+- Not added:
+  - Unitree H2-X lost a leg after a side flip at a Hangzhou demo (2026-10-22): no injury and no damage beyond the robot itself.
+  - CMR Surgical Versius console recall Z-2717-2026 (Secure Boot not enabled): a cybersecurity issue that doesn't affect how the robot senses, decides or moves.
+  - KXAN/Statesman "Austin hits 249 robotaxi wrecks" (2026-10-27): aggregate SGO counts. Its newest individual crashes (Zoox and Tesla, August 2026) are already in `data/candidates/nhtsa.csv`, and none has a causal account.
+- Needs Geraldo's decision:
+  1. OSHA: give the agent network access to osha.gov, or provide a DOL API key (for example as an Actions secret)?
+  2. A verified candidate outside the window: a worker died on 2026-09-25 after an automatically operating robotic arm in a product-loading system struck him on 2026-09-21 at Ottogi SF's plant in Goseong, South Korea. A co-worker reportedly switched the arm's power back on. The Ministry of Employment and Labor and the police are investigating (Nocut News, 2026-09-29: https://en.nocutnews.co.kr/news/6584202). Should it be added?
+  3. RIC-2026-016 cites Starship as the maker (DPA), while ERR calls it a Bolt robot. The company column shows both.
