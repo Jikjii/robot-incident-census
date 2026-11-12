@@ -82,3 +82,21 @@
   1. OSHA: give the agent network access to osha.gov, or provide a DOL API key (for example as an Actions secret)?
   2. A verified candidate outside the window: a worker died on 2026-09-25 after an automatically operating robotic arm in a product-loading system struck him on 2026-09-21 at Ottogi SF's plant in Goseong, South Korea. A co-worker reportedly switched the arm's power back on. The Ministry of Employment and Labor and the police are investigating (Nocut News, 2026-09-29: https://en.nocutnews.co.kr/news/6584202). Should it be added?
   3. RIC-2026-016 cites Starship as the maker (DPA), while ERR calls it a Bolt robot. The company column shows both.
+
+## 2026-11-11 (America/New_York): weekly run
+- Window: incidents reported 2026-10-28 to 2026-11-11 (there is no 2026-11-04 entry, so this covers both weeks). About 50 web calls. `census/next` was already up to date with `main`, so the rebase was a no-op.
+- Incidents added: 3. Total: 30.
+  - RIC-2026-017: NHTSA recall query RQ26006 (announced 2026-11-09) into whether Waymo's December 2025 school-bus recall worked, covering 2,895 vehicles. Dated to the month (2026-11) because only a secondary outlet gives the opening day ("Friday", 2026-11-06). Tier C (Reuters via Claims Journal, Drive Tesla Canada). The NHTSA PDF (https://static.nhtsa.gov/odi/inv/2026/INOA-RQ26006-19477.pdf) couldn't be opened from here.
+  - RIC-2026-018: Punggol, Singapore, 2026-11-05: a Grab (WeRide) autonomous test vehicle passed close in front of a girl crossing on a green signal; the safety operator took over. LTA cited preliminary vehicle data, so evidence is `logs_cited`. LTA paused Grab's testing at such junctions. No injuries. Tier C (Straits Times via The Star, Mothership).
+  - RIC-2026-019: Punggol, Singapore, 2026-11-05: a ComfortDelGro (Zig) autonomous test vehicle making a U-turn reportedly nearly hit an oncoming car (dashcam video). LTA is investigating and paused U-turn testing there. Tier C (Mothership, Goody Feed).
+- TODO: OSHA is still blocked (www.osha.gov returned 403 again), so I took the next item. Done: EU Safety Gate pull (`python -m census safetygate`). The first pull (2026-09-12 to 2026-11-11) found no non-toy robot alerts, so `data/candidates/eu_safety_gate.csv` holds only its header. It matches product names only; a full-year pull is too slow to run in one session.
+- Not added:
+  - Waymos stalled in king-tide floodwater in San Diego (late October 2026, The Auto Wire): no harm, no regulator record, and no exact date.
+  - Starship robot lawsuit by an ASU parking attendant (KJZZ, July 2026): the incident was in 2023, before the census starts.
+  - Waymo fleeing a CHP slowdown into a construction lane on a San Francisco freeway (May 2026, Mydrivers via Sina, 2026-11-11): old, no harm. Waymo's freeway pause was already reported in May.
+- Needs Geraldo's decision:
+  1. Backfill candidates found this week, outside the window (not added):
+     - Zoox, San Francisco, 2026-01-17: a Zoox robotaxi hit a car door being opened into its path, injuring the person's hand; SFPD investigated (TechCrunch 2026-01-28, Mission Local). Sources name the injured person, so a row would have to leave that out.
+     - Grab/WeRide, Punggol, 2026-01-17: a shuttle hit a road divider during a human takeover (LTA media statement: https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/1/news-releases/lta-media-statement-incident-edgedale-plains-17-jan-26.html). A human was driving at impact, so it may be out of scope.
+  2. Singapore shuttles with a safety operator on board are coded `robotaxi` (automated-driving testing). Is that the type you want, or should autonomous shuttles get their own?
+  3. Earlier questions in this log (remote-operator crashes, the Ottogi SF arm fatality, OSHA access) are still open.
