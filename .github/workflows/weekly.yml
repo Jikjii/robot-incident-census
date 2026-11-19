@@ -1,0 +1,83 @@
+name: weekly
+
+# Runs the source pulls, commits new candidates to census/next and opens an issue listing them for review.
+# Candidates are leads, not incidents: a person (or the weekly keeper) verifies each one before it goes
+# into data/incidents.csv. This workflow never pushes to main and never force-pushes.
+
+on:
+  schedule:
+    - cron: "17 11 * * 1"  # Mondays 11:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekly
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Switch to census/next
+        run: |
+          if git ls-remote --exit-code --heads origin census/next >/dev/null; then
+            git fetch origin census/next
+            git checkout -B census/next origin/census/next
+          else
+            git checkout -b census/next
+          fi
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Keep the previous candidates
+        run: |
+          mkdir -p "$RUNNER_TEMP/previous"
+          cp data/candidates/*.csv "$RUNNER_TEMP/previous/" 2>/dev/null || true
+      - name: openFDA
+        id: openfda
+        continue-on-error: true
+        run: python -m census openfda --days 30
+      - name: NHTSA
+        id: nhtsa
+        continue-on-error: true
+        run: python -m census nhtsa --days 60
+      - name: EU Safety Gate
+        id: safetygate
+        continue-on-error: true
+        run: python -m census safetygate --days 14
+      - name: Validate and test
+        run: |
+          python -m census validate data/incidents.csv
+          python -m pytest -q
+      - name: List new candidates
+        env:
+          FAILED: >-
+            ${{ steps.openfda.outcome == 'failure' && 'openfda,' || '' }}${{ steps.nhtsa.outcome == 'failure' && 'nhtsa,' || '' }}${{ steps.safetygate.outcome == 'failure' && 'safetygate,' || '' }}
+        run: |
+          python -m census newcandidates "$RUNNER_TEMP/previous" data/candidates \
+            --out "$RUNNER_TEMP/issue.md" --failed "$FAILED"
+      - name: Commit candidates to census/next
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add data/candidates
+          if ! git diff --cached --quiet; then
+            git commit -m "Weekly pulls: candidates $(date -u +%F)"
+            git push origin census/next
+          fi
+      - name: Open a review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f "$RUNNER_TEMP/issue.md" ]; then
+            gh issue create --title "Candidates to review $(date -u +%F)" --body-file "$RUNNER_TEMP/issue.md"
+          fi
