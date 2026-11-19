@@ -100,3 +100,17 @@
      - Grab/WeRide, Punggol, 2026-01-17: a shuttle hit a road divider during a human takeover (LTA media statement: https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/1/news-releases/lta-media-statement-incident-edgedale-plains-17-jan-26.html). A human was driving at impact, so it may be out of scope.
   2. Singapore shuttles with a safety operator on board are coded `robotaxi` (automated-driving testing). Is that the type you want, or should autonomous shuttles get their own?
   3. Earlier questions in this log (remote-operator crashes, the Ottogi SF arm fatality, OSHA access) are still open.
+
+## 2026-11-19 (America/New_York): weekly run
+- Window: incidents reported 2026-11-05 to 2026-11-19. About 35 web calls. `census/next` was already up to date with `main`, so the rebase was a no-op.
+- Incidents added: 2. Total: 32.
+  - RIC-2026-020: on 2026-11-11 the California DMV barred Waymo from driverless freeway operation and testing, calling its freeway operations "an imminent hazard to public safety" after repeated entries into active construction zones (three Waymos in a US-101 closure near Burlingame; one trying to get around a CHP traffic break on I-280). Waymo paused driverless freeway rides nationwide and said there were no injuries or collisions. Dated to the order, like RIC-2026-014. Tier C (ABC News, Fortune). I couldn't find the DMV's own notice online.
+  - RIC-2026-021: San Diego, Monday 2026-11-16: a driverless Waymo stopped on the trolley tracks at the County Center/Little Italy station as the gates came down. After its two passengers got out, it reportedly reversed through a crossing gate, breaking its rear window. MTS confirmed it and is investigating. No injuries. Tier C (KFMB News 8 via Yahoo). Evidence is `unknown`: the only video is a bystander's.
+- TODO: OSHA is still blocked (www.osha.gov returned 403 again), so I took the next item. Done: the weekly GitHub Action (`.github/workflows/weekly.yml`, plus `python -m census newcandidates` for the issue body). It hasn't run on GitHub yet. The first run will list every existing candidate as new only if `data/candidates/` is empty on the branch; otherwise only new keys are listed.
+- Not added:
+  - Phoenix, 2026-11-16: an SUV reportedly going over 80 mph hit a Waymo stopped at a light at 20th and Van Buren. The Waymo was pushed into a second Waymo, and three people were hospitalized, one critically (azfamily, FOX 10). Police are investigating, and Waymo gave them video. The robot didn't cause the impact, the same open question as the Dallas fatality.
+  - Tesla Cybercab crashes in the latest SGO release (Electrek, 2026-11-16): the four ADS crashes (Austin, August to September 2026) are at or below 5 mph with no injuries and no causal account. The other four are Level 2 test-driver reports, which are out of scope.
+- Needs Geraldo's decision:
+  1. Should the weekly Action commit candidates straight to `census/next`, the branch this agent also pushes to? A plain push can fail if both land at once (it never force-pushes). A separate `census/candidates` branch would avoid that.
+  2. Robots that are struck and don't cause the impact (Phoenix 2026-11-16, Dallas August 2026): in or out?
+  3. Earlier questions in this log (remote-operator crashes, the Ottogi SF arm fatality, OSHA access, the shuttle type) are still open.
